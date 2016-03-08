@@ -117,7 +117,8 @@
         {%> <%=request.getParameter( "_error" )%> <% }% -->
 </div>
 <hr/>
-                <select id="dropDownDest"></select>
+                <div id="dropDownDest">
+                </div>
 </div>
 <!-- end of header.jsp stuff -->
           <div class="title" id="myTitle">Welcome to Our Page</div>
@@ -233,9 +234,16 @@
         function loadMenuData() {
             //var str = '[{"id":"A","name":"Bart"},{"id":"B", "name":"Joe"},{"id":"C", "name":"Gomer"}]';
             $.getJSON("./shoulders.json", function( json ) {
-               $.each(json, function( key, value) {
-                    $(document).find("#dropDownDest").append($('<option></option>').val(value.id).html(value.name));
+                var menu = $(document).find("#dropDownDest");
+                menu.append('<ul id="navigation" ><li class="application"><a href="#">Applications</a>');
+                $.each(json, function( key, value) {
+                       menu.append('<li>'+value['app']+'</li><ul>');
+                        $.each(value['processes'], function(key2, process) {
+                            menu.append('<li><a href="#">'+process['process']+'</a></li>');
+                        })
+                        menu.append('</ul>');
                 });
+                menu.append('</ul>');              
             },
             "json"
             );
