@@ -26,26 +26,29 @@ $(document).ready(function() {
         }
     });
 
+    */
     $(document).on('click', "li", function(evt) {
         if (!$(this).hasClass('application'))
         {
             var processName = $(this).text();
-            var parent = $(this).parent('ul eq(1)');
-            var parentName = $(this).parent('ul').parent('li').attr('id');
-            var theToken = $('#token').text();
+            //var parent = $(this).parent('ul eq(1)');
+            //alert('parent: '+parent);
+            var parentName = $(this).attr('name');
+            //var theToken = $('#token').text();
             try {
-                window.location.href = "/sc_demo/dispatcher?event=_start&process=" +
-                        processName + "&app=" + parentName +
-                        "&userToken=" + theToken;
+                alert('dispatch to: '+processName+' with parent: '+parentName);
+                //window.location.href = "/sc_demo/dispatcher?event=_start&process=" +
+                //        processName + "&app=" + parentName +
+                //        "&userToken=" + theToken;
             } catch (err) {
                 var errMsg = "<doc><errors><error>" + err + "</error></errors><tasks></tasks></doc>";
-                window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
+                $("#error-div").text(errMsg);
+                //window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
                 evt.stopPropagation();
             }
             evt.stopPropagation();
         }
     });
-    */
     $("#bugs").click(function() {
         showBugList();
     });
@@ -145,14 +148,13 @@ $(document).ready(function() {
         window.location.href = "/sc_demo/home.jsp?app=Home&process=tasklist&userToken=" + theToken;
         //  $(document).find("#tasklist").dataTable().columnFilter();
     }, 30000); // autorefresh the content of the div after every 30000 milliseconds(30sec)
-
+*/
     $("#navigation").navPlugin({
         'itemWidth': 150,
         'itemHeight': 30,
         'navEffect': "slide",
         'speed': 250
     });
-  */
 });
 
 //highlight colors for background and foreground

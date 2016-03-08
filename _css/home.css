@@ -219,7 +219,7 @@ input
     border-left:1px solid #ccc;
     border-right:1px solid #999;
     border-bottom:1px solid #999;
-    margin: 0px;
+    margin: 20px;
     padding: 0px;
     color: rgb(53,75,118);
 }
@@ -244,6 +244,11 @@ input
 }
 #navigation ul .stack > a:hover {
     background-position: 97% -54px;
+}
+
+.application {
+    font: 16px 'ColaborateLightRegular', Arial, sans-serif;
+
 }
 
 #info {visibility:hidden;}
