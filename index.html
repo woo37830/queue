@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<!-- $Author: woo $   -->
+<!-- $Date: 2016/03/17 15:35:51 $     -->
+<!-- $Revision: 1.8 $ -->
+<!-- $Source: /Users/woo/cvsrep/queue/index.html,v $   -->
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 	<title>Workflow Demo</title>
@@ -35,10 +39,12 @@
                         }
                     });
             });
+            $("#log_out").hide();
             $(document).on('click','#log_out', function() {
                 logout();
             });
-            $("#navigation li").hover(function(){
+            $("#navigation").hover(function(){
+                alert('hovering');
                     $(this).children('ul').hide();
                     $(this).children('ul').slideDown('fast');
                 },
@@ -57,6 +63,7 @@
 	      <!-- insert header.jsp stuff -->
         <div class="header" id="header">
 	      <center>
+	      <div id="log_in">Login</div>
     <!-- This is done on the server, request should have filled in userToken -->
     <table cellpadding="0" cellspacing="0" width="100%" >
         <tr>
@@ -174,7 +181,6 @@
 	            $("#user").text("");
 	            $("#role").text("");
 	            $("#org").text("");
-	            $("#log_out").text("Login");
 	            $("#log_out").attr('id', 'log_in');
 	            //$("#header").hide();
 	            $("#dropDownDest").hide();
@@ -196,6 +202,8 @@
             $('#lin').dialog('close');
 	        if( json[uName] && pName == json[uName].passwd ) {
 	                $("#error-div").text("");
+	                $("#log_in").text('Logout');
+	                $("#log_in").attr('id', 'log_out');
 	                uRole = json[uName].role;
 	                uOrg = json[uName].org;
 	                var cookieData = 'uName='+uName+'|uRole='+uRole+'|uOrg='+uOrg+'|page=home.page';
@@ -220,6 +228,7 @@
 	        }
 	        function logout() {
 	            eraseCookie('logged_in');
+	            $("#entries").hide();
 	            uName = "";
 	            uRole = "";
 	            uOrg = "";
@@ -235,7 +244,9 @@
                 $("#doApplication").text("");
 	            $("#doProcess").text("");
 	            $("#doJob").text("");
-	            login();
+	            $("#log_out").text('Login');
+	            $("#log_out").attr('id', 'log_in');
+	            //login();
 	        }
 	        function getRequests() {
                 var s1 = location.search.substring(1, location.search.length).split('&'),
@@ -255,7 +266,7 @@
             $.getJSON("./shoulders.json", function( json ) {
                 var close = 0;
                 $.each(json, function( key, value) {
-                       menu += '<li id=\"'+value['app']+'\">'+value['app']+'</li>';
+                       menu += '<li class="app" id=\"'+value['app']+'\">'+value['app']+'</li>';
                        if( close == 0 ) {
                             menu += '<ul>';
                             close = 1;
@@ -270,6 +281,8 @@
                 });
                 menu += '</ul>';     
                 $(document).find("#dropDownDest").append(menu);
+                $("#navigation ul").hide();
+                $(".app").hide();
             },
             "json"
             );

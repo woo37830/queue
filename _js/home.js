@@ -1,3 +1,9 @@
+/*
+    $Author: woo $
+    $Date: 2016/03/17 15:29:26 $
+    $Revision: 1.2 $
+    $Source: /Users/woo/cvsrep/queue/_js/home.js,v $
+*/
 
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded

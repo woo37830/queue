@@ -1,9 +1,8 @@
 /*
-    Document   : test_user1
-    Created on : Feb 8, 2013, 4:24:32 PM
-    Author     : woo
-    Description:
-        Purpose of the stylesheet follows.
+    $Author: woo $
+    $Date: 2016/03/17 15:29:26 $
+    $Revision: 1.4 $
+    $Source: /Users/woo/cvsrep/queue/_css/home.css,v $
 */
 
 /*
@@ -204,6 +203,7 @@ input
     height: 150px;
     /*border: 5px solid black;*/
 }
+/* This removes the list '*' for the menus */
 #navigation ul, #navigation li {
     margin: 0;
     padding: 0;
@@ -223,6 +223,7 @@ input
     padding: 0px;
     color: rgb(53,75,118);
 }
+/*
 #navigation a:hover {
     border-top:1px solid #999;
     border-left:1px solid #999;
@@ -245,7 +246,7 @@ input
 #navigation ul .stack > a:hover {
     background-position: 97% -54px;
 }
-
+*/
 .application {
     font: 16px 'ColaborateLightRegular', Arial, sans-serif;
 

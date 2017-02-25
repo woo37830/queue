@@ -1,4 +1,10 @@
 <?php
+#
+# $Author: woo $
+# $Date: 2016/03/17 15:29:26 $
+# $Revision: 1.3 $
+# $Source: /Users/woo/cvsrep/queue/save_entry.php,v $
+#
 
 $process = htmlspecialchars($_REQUEST['process']);
 $activity = htmlspecialchars($_REQUEST['activity']);
