@@ -83,7 +83,7 @@
                 { data:  "JOB_STEP_ID" },
                 { data:  "CREATION_DATE" },
                 { data:  "OWNER", width: "10%" },
-                { data: "MSG" }
+                { data: "COMMENT" }
             ]
             });
             }
@@ -119,4 +119,3 @@
 		}
 </script>
 <script type="text/javascript" src="_js/queue/crud.js" > </script>
-
