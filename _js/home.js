@@ -210,7 +210,7 @@ function showTaskList()
 function showBugList()
 {
     window.open(
-            'http://jwooten37830.com/mantisbt-1.2.10/set_project.php?project_id=27&ref=view_all_bug_page.php',
+            'http://jwooten37830.com/mantisbt-1.2.10/set_project.php?project_id=45&ref=view_all_bug_page.php',
             '_blank');
 }
 
@@ -271,5 +271,3 @@ function removeSelectedItem(menuObj)
     if (str == ",")
         str = "";
 }
-
-
