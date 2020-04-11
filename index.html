@@ -49,7 +49,7 @@
                     $(this).children('ul').slideDown('fast');
                 },
             function () {
-                $('ul', this).slideUp('fast');            
+                $('ul', this).slideUp('fast');
             });
     });
     </script>
@@ -161,7 +161,7 @@
 	<div id="lin-buttons">
 		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="authorize()" style="width:90px">Login</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#lin').dialog('close')" style="width:90px">Cancel</a>
-	</div>	
+	</div>
 <script type="text/javascript">
 	if( readCookie("logged_in") ) {
 	                $("#user").text(getFromCookie("logged_in", "uName"));
@@ -174,7 +174,7 @@
 	                $("#header").show();
 	                $("#dropDownDest").show();
                     loadMenuData();
-                    $("#doApplication").text("Home");
+                  $("#doApplication").text("Home");
 	                $("#doProcess").text("TaskList");
 	                $("#doJob").text("N/A");
 	} else {
@@ -186,7 +186,7 @@
 	            $("#dropDownDest").hide();
 	            login();
 	        }
-	
+
         var days = 1;
         function login() {
 	                $('#lfm').form('clear');
@@ -217,8 +217,10 @@
 	                $("#page").load("home.page");
 	                $("#header").show();
 	                $("#dropDownDest").show();
-                    loadMenuData();
-                    $("#doApplication").text("Home");
+                  loadMenuData();
+									$("#navigation ul").show();
+									$(".app").show();
+                  $("#doApplication").text("Home");
 	                $("#doProcess").text("TaskList");
 	                $("#doJob").text("N/A");
 	            } else {
@@ -279,7 +281,7 @@
                             close = 0;
                         }
                 });
-                menu += '</ul>';     
+                menu += '</ul>';
                 $(document).find("#dropDownDest").append(menu);
                 $("#navigation ul").hide();
                 $(".app").hide();
