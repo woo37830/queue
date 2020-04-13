@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded
-    $("#form-div").load("/sc_demo/form.jsp");
+    $("#form-div").load(".//form.jsp");
     $('#info').hide();
     $('#debug').hide();
 
@@ -11,19 +11,19 @@ $(document).ready(function() {
         var parentName = $(this).parent('ul').parent('li').attr('id');
         var theToken = $('#token').text();
         try {
-            window.location.href = "/sc_demo/dispatcher?event=_start&process=" +
+            window.location.href = "./dispatcher.php?event=_start&process=" +
                     processName + "&app=" + parentName +
                     "&userToken=" + theToken;
         } catch (err) {
             var errMsg = "<doc><errors><error>" + err + "</error></errors><tasks></tasks></doc>";
-            window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
+            window.location.href = ".//home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
             evt.stopPropagation();
         }
         evt.stopPropagation();
     });
     $(document).on('click', '#home-td', function() {
         var theToken = $('#token').text();
-        window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&userToken=" + theToken;
+        window.location.href = ".//home.jsp?process=tasklist&app=Home&userToken=" + theToken;
     });
     $("#bugs").click(function() {
         showBugList();
@@ -34,12 +34,12 @@ $(document).ready(function() {
     $("#title").click(function() {
         var aName = $(this).text();
         var appX = $(document).find("#doApplication").text();
-        window.open("/sc_demo/organizations/Shoulders/doc/" + appX + "/" + aName + ".html");
+        window.open(".//organizations/Shoulders/doc/" + appX + "/" + aName + ".html");
     });
 
     $("#doApplication").click(function() {
         var appName = $(this).text();
-        window.open("/sc_demo/organizations/Shoulders/doc/" + appName + "/application-summary.html");
+        window.open(".//organizations/Shoulders/doc/" + appName + "/application-summary.html");
     });
 
     $("#doProcess").click(function() {
@@ -47,7 +47,7 @@ $(document).ready(function() {
         var aName = $(document).find("#doApplication").text();
         var theToken = $('#token').text();
         var oName = "Shoulders";
-        window.open("/sc_demo/workflow_viewer.jsp?process=" + processName + "&app=" + aName + "&organization=" + oName);
+        window.open(".//workflow_viewer.jsp?process=" + processName + "&app=" + aName + "&organization=" + oName);
     });
     $("#doJob").click(function() {
         alert("Show the Job History for: " + $(this).text());
@@ -148,13 +148,13 @@ $(document).ready(function() {
         $inputs.prop("disabled", true);
         // fire off the event to the dispatcher
         event.preventDefault();
-        request = $.get("/sc_demo/dispatcher", serializedData, processReset).error(errorResponse);
+        request = $.get("./dispatcher.php", serializedData, processReset).error(errorResponse);
         request = null;
         $inputs.prop("disabled", false);
 
         return true;
         //var request = $.ajax({
-        //    url: "/sc_demo/dispatcher",
+        //    url: "./dispatcher.php",
         //    type: "post",
         //    data: serializedData})
         //    .done(function(){
@@ -210,7 +210,7 @@ function disabledMenuClick(menuObj)
 
 function logout()
 {
-    document.location.href = '/sc_demo/login.jsp?event=logout';
+    document.location.href = './/login.jsp?event=logout';
     //document.location.href = 'login.jsp';
 
 }

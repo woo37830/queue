@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded   // Change the style sheet and reset that portion of the user token
-    $("#form-div").load("../sc_demo/form.jsp");
+    $("#form-div").load("...//form.jsp");
     $(document).on('click', '#home-td', function() {
         var theToken = $('#token').text();
         window.location.href = "../home.jsp?process=tasklist&app=Home&userToken=" + theToken;

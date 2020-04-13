@@ -7,7 +7,7 @@
 
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded
-    //$("#form-div").load("/sc_demo/form.jsp");
+    //$("#form-div").load(".//form.jsp");
     $('#info').hide();
     $('#debug').hide();
 
@@ -16,27 +16,29 @@ $(document).ready(function() {
                 alert('clicked home-td');
                 $("#page").load("home.page");
             });
-  /*
-    $(document).on('click', '#tasklist tr', function() {
+
+    $(document).on('click', '#entries tr', function() {
         var bp = $.trim($(this).find("#BUSINESS_PROCESS").text());
         var j = $.trim($(this).find("#JOB_ID").text());
         var act = $.trim($(this).find("#JOB_STEP_ID").text());
         var app = $.trim($(this).find("#QUEUE_NAME").text());
         var uri = $.trim($(this).find("#DATA_URI").text());
-        var aPos = $dataTable.fnGetPosition(this);
-        var oid = $.trim($(this).attr('id'));
-        var resultObj = $.trim($(this).find("#RESULT_OBJ").text());
-        if (oid != null && oid.length > 0 && resultObj != null && resultObj.length > 0)
+
+        var oid = $.trim($(this).find("td:first").text());
+        alert( 'oid = '+oid);
+//        var resultObj = $.trim($(this).find("#RESULT_OBJ").text());
+//    if (oid != null && oid.length > 0 && resultObj != null && resultObj.length > 0)
+        if (oid != null && oid.length > 0 )
         {
             var theToken = $('#token').text();
 
-            window.location.href = "/sc_demo/dispatcher?event=_dequeue&oid=" + oid + "&app=" + app + "&process=" + bp + "&activity=" + act + "&current_job=" + j + "&dataUri=" + uri + "&result-obj=" + resultObj + "&userToken=" + theToken;
+            window.location.href = "./dispatcher.php?event=_dequeue&oid=" + oid + "&app=" + app + "&process=" + bp + "&activity=" + act + "&current_job=" + j + "&dataUri=" + uri + "&userToken=" + theToken;
         } else {
-            window.location.href = "/sc_demo/dispatcher?event=_changeStatus&oid=" + oid + "&status=DAMAGED" + "&userToken=" + theToken+"&_error=resultObj_is:_"+resultObj+"_for_oid:_"+oid;
+            window.location.href = "./dispatcher.php?event=_changeStatus&oid=" + oid + "&status=DAMAGED" + "&userToken=" + theToken+"_for_oid:_"+oid;
         }
     });
 
-    */
+
     $(document).on('click', "li", function(evt) {
         if (!$(this).hasClass('application'))
         {
@@ -47,13 +49,13 @@ $(document).ready(function() {
             //var theToken = $('#token').text();
             try {
                 alert('dispatch to: '+processName+' with parent: '+parentName);
-                //window.location.href = "/sc_demo/dispatcher?event=_start&process=" +
+                //window.location.href = "./dispatcher.php?event=_start&process=" +
                 //        processName + "&app=" + parentName +
                 //        "&userToken=" + theToken;
             } catch (err) {
                 var errMsg = "<doc><errors><error>" + err + "</error></errors><tasks></tasks></doc>";
                 $("#error-div").text(errMsg);
-                //window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
+                //window.location.href = ".//home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
                 evt.stopPropagation();
             }
             evt.stopPropagation();
@@ -72,7 +74,7 @@ $(document).ready(function() {
         var appX = $(document).find("#doApplication").text();
         var path = appX + "/" + aName + ".html";
         path = "index.html";
-        //window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        //window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doApplication").click(function() {
@@ -82,13 +84,13 @@ $(document).ready(function() {
         if (appName == "Home") {
             path = "index.html";
         }
-        //window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        //window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doProcess").click(function() {
         var processName = $(this).text();
         alert('Show workflow for: '+processName);
-        //window.open("/sc_demo/workflow_viewer.jsp?process=" + processName);
+        //window.open(".//workflow_viewer.jsp?process=" + processName);
     });
     $("#doJob").click(function() {
         alert("Show the Job History for: " + $(this).text());
@@ -155,7 +157,7 @@ $(document).ready(function() {
         kounter += 1;
         var theToken = $('#token').text();
         $('#error-div').text('');
-        window.location.href = "/sc_demo/home.jsp?app=Home&process=tasklist&userToken=" + theToken;
+        window.location.href = ".//home.jsp?app=Home&process=tasklist&userToken=" + theToken;
         //  $(document).find("#tasklist").dataTable().columnFilter();
     }, 30000); // autorefresh the content of the div after every 30000 milliseconds(30sec)
 */

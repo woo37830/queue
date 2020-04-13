@@ -1,25 +1,25 @@
 
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded
-    $("#form-div").load("/sc_demo/form.jsp");
+    $("#form-div").load(".//form.jsp");
         var $errorDiv = $('#error-div'); // get the reference of the div
         var $_errorDiv = $('#_error-div');
         if( $_errorDiv.text() != null ) { // copy the one coming back from the service to the location
             $errorDiv.text($_errorDiv.text());
             $_errorDiv.hide();
         }
- 
+
         $errorDiv.slideDown(function() {
             $errorDiv.css("visibility", "visible"); // show and set the message
             setTimeout(function() {
                 $errorDiv.slideUp();
             }, 5000);
         });
-        
+
     $('#info').hide();
     $('#debug').hide();
 
-  var $server = "/sc_demo";
+  var $server = "./";
 
     var $dataTable = $('#tasklist').dataTable({
         "bAutoWidth": false,
@@ -51,7 +51,7 @@ $(document).ready(function() {
         {
             var theToken = $('#token').text();
 
-            window.location.href = "/sc_demo/dispatcher?event=_inspect&oid=" + oid + "&userToken=" + theToken;
+            window.location.href = "./dispatcher.php?event=_inspect&oid=" + oid + "&userToken=" + theToken;
         } else {
             alert('This entry contains incorrect information and cannot be de-queued!\n' +
                     "oid = " + oid);
@@ -66,12 +66,12 @@ $(document).ready(function() {
             var parentName = $(this).parent('ul').parent('li').attr('id');
             var theToken = $('#token').text();
             try {
-                window.location.href = "/sc_demo/dispatcher?event=_start&process=" +
+                window.location.href = "./dispatcher.php?event=_start&process=" +
                         processName + "&app=" + parentName +
                         "&userToken=" + theToken;
             } catch (err) {
                 var errMsg = "<doc><errors><error>" + err + "</error></errors><tasks></tasks></doc>";
-                window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
+                window.location.href = ".//home.jsp?process=tasklist&app=Home&error=" + errMsg + "&userToken=" + theToken;
                 evt.stopPropagation();
             }
             evt.stopPropagation();
@@ -85,12 +85,12 @@ $(document).ready(function() {
     });
     $(document).on('click', '#home-td', function() {
         var theToken = $('#token').text();
-        window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&userToken=" + theToken;
+        window.location.href = ".//home.jsp?process=tasklist&app=Home&userToken=" + theToken;
     });
     $(document).on('click', '#selectId', function() {
         var theToken = $('#token').text();
         var theStatus = $("#selectId option:selected").text();
-        window.location.href = "/sc_demo/queueAdmin.jsp?app=Home&select="+theStatus+"&userToken=" + theToken;
+        window.location.href = ".//queueAdmin.jsp?app=Home&select="+theStatus+"&userToken=" + theToken;
     });
     $("#bugs").click(function() {
         showBugList();
@@ -104,7 +104,7 @@ $(document).ready(function() {
         var appX = $(document).find("#doApplication").text();
         var path = appX + "/" + aName + ".html";
         path = "index.html";
-        window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doApplication").click(function() {
@@ -113,12 +113,12 @@ $(document).ready(function() {
         if (appName == "Home") {
             path = "index.html";
         }
-        window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doProcess").click(function() {
         var processName = $(this).text();
-        window.open("/sc_demo/workflow_viewer.jsp?process=" + processName);
+        window.open(".//workflow_viewer.jsp?process=" + processName);
     });
     $("#doJob").click(function() {
         alert("Show the Job History for: " + $(this).text());
@@ -218,7 +218,7 @@ function disabledMenuClick(menuObj)
 
 function logout()
 {
-    document.location.href = '/sc_demo/login.jsp?event=logout';
+    document.location.href = './/login.jsp?event=logout';
     //document.location.href = 'login.jsp';
 
 }
@@ -299,5 +299,3 @@ function removeSelectedItem(menuObj)
     if (str == ",")
         str = "";
 }
-
-

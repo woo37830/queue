@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
     // This is done on the client in the browser after the html of the page has loaded
-    $("#form-div").load("/sc_demo/form.jsp");
+    $("#form-div").load(".//form.jsp");
     $('#info').hide();
     $('#debug').hide();
 
-    var $server = "/sc_demo";
+    var $server = "./";
 
     var $dataTable = $('#tasklist').dataTable({
         "bAutoWidth": false,
@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
     $(document).on('click', '#home-td', function() {
         var theToken = $('#token').text();
-        window.location.href = "/sc_demo/home.jsp?process=tasklist&app=Home&userToken=" + theToken;
+        window.location.href = ".//home.jsp?process=tasklist&app=Home&userToken=" + theToken;
     });
     $("#bugs").click(function() {
         showBugList();
@@ -35,7 +35,7 @@ $(document).ready(function() {
         var appX = $(document).find("#doApplication").text();
         var path = appX + "/" + aName + ".html";
         path = "index.html";
-        window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doApplication").click(function() {
@@ -44,12 +44,12 @@ $(document).ready(function() {
         if (appName == "Home") {
             path = "index.html";
         }
-        window.open("/sc_demo/organizations/Shoulders/doc/" + path);
+        window.open(".//organizations/Shoulders/doc/" + path);
     });
 
     $("#doProcess").click(function() {
         var processName = $(this).text();
-        window.open("/sc_demo/workflow_viewer.jsp?process=" + processName);
+        window.open(".//workflow_viewer.jsp?process=" + processName);
     });
     $("#doJob").click(function() {
         alert("Show the Job History for: " + $(this).text());
@@ -149,7 +149,7 @@ function disabledMenuClick(menuObj)
 
 function logout()
 {
-    document.location.href = '/sc_demo/login.jsp?event=logout';
+    document.location.href = './/login.jsp?event=logout';
     //document.location.href = 'login.jsp';
 
 }
