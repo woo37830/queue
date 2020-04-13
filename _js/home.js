@@ -18,21 +18,19 @@ $(document).ready(function() {
             });
 
     $(document).on('click', '#entries tr', function() {
-        var bp = $.trim($(this).find("#BUSINESS_PROCESS").text());
-        var j = $.trim($(this).find("#JOB_ID").text());
-        var act = $.trim($(this).find("#JOB_STEP_ID").text());
-        var app = $.trim($(this).find("#QUEUE_NAME").text());
-        var uri = $.trim($(this).find("#DATA_URI").text());
+      var oid = $.trim($(this).find("td").eq(0).text());
+      var j = $.trim($(this).find("td").eq(1).text());
+      var dept = $.trim($(this).find("td").eq(2).text());
+      var bp = $.trim($(this).find("td").eq(3).text());
+      var act = $.trim($(this).find("td").eq(4).text());
 
-        var oid = $.trim($(this).find("td:first").text());
-        alert( 'oid = '+oid);
 //        var resultObj = $.trim($(this).find("#RESULT_OBJ").text());
 //    if (oid != null && oid.length > 0 && resultObj != null && resultObj.length > 0)
         if (oid != null && oid.length > 0 )
         {
             var theToken = $('#token').text();
 
-            window.location.href = "./dispatcher.php?event=_dequeue&oid=" + oid + "&app=" + app + "&process=" + bp + "&activity=" + act + "&current_job=" + j + "&dataUri=" + uri + "&userToken=" + theToken;
+            window.location.href = "./dispatcher.php?event=_dequeue&oid=" + oid + "&app=" + dept + "&process=" + bp + "&activity=" + act + "&current_job=" + j + "&userToken=" + theToken;
         } else {
             window.location.href = "./dispatcher.php?event=_changeStatus&oid=" + oid + "&status=DAMAGED" + "&userToken=" + theToken+"_for_oid:_"+oid;
         }
