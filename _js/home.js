@@ -11,8 +11,12 @@ $(document).ready(function() {
     $('#info').hide();
     $('#debug').hide();
 
-    var $server = "/sc_demo";
-    /*
+    $(document).on('click', '#home-td', function() {
+       // var theToken = $('#token').text();
+                alert('clicked home-td');
+                $("#page").load("home.page");
+            });
+  /*
     $(document).on('click', '#tasklist tr', function() {
         var bp = $.trim($(this).find("#BUSINESS_PROCESS").text());
         var j = $.trim($(this).find("#JOB_ID").text());

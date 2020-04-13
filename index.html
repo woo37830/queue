@@ -142,7 +142,7 @@
 	</div> <!-- end of content -->
 </div> <!-- end of wrapper -->
     <div class="footer">
-        <p>Created by J. W. Wooten, Ph.D. </p>
+        <p>Created by J. W. Wooten, Ph.D. gitinfo();</p>
     </div>
 	<div id="lin" class="easyui-dialog" style="width:400px;height:200px;padding:10px 20px"
 			closed="true" buttons="#lin-buttons">
@@ -218,6 +218,7 @@
 	                $("#header").show();
 	                $("#dropDownDest").show();
                   loadMenuData();
+									alert('loaded Menu Data');
 									$("#navigation ul").show();
 									$(".app").show();
                   $("#doApplication").text("Home");
@@ -283,12 +284,15 @@
                 });
                 menu += '</ul>';
                 $(document).find("#dropDownDest").append(menu);
-                $("#navigation ul").hide();
-                $(".app").hide();
+  //  TODO - 200412 -woo             $("#navigation ul").hide();
+  //              $(".app").hide();
             },
             "json"
             );
          }
+			function gitinfo() {
+					return "Git Hash";
+			}
 </script>
 	<style type="text/css">
 	        #dlg-buttons div {

@@ -8,9 +8,9 @@
 
 $id = intval($_REQUEST['id']);
 
-include 'conn_local.php';
+include 'conn.php';
 
-$sql = "delete from entries where ENTRY_NUMBER=$id";
+$sql = "delete from queueEntry where ENTRY_NUMBER=$id";
 $result = @mysql_query($sql);
 if ($result){
 	echo json_encode(array('success'=>true));

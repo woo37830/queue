@@ -9,9 +9,9 @@
 $id = intval($_REQUEST['id']);
 $msg = htmlspecialchars($_REQUEST['msg']);
 
-include 'conn_local.php';
+include 'conn.php';
 
-$sql = "update entries set msg='$msg' where ENTRY_NUMBER=$id";
+$sql = "update queueEntry set msg='$msg' where ENTRY_NUMBER=$id";
 $result = @mysql_query($sql);
 if ($result){
 	echo json_encode(array(
